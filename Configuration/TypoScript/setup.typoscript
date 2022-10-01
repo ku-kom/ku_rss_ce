@@ -1,0 +1,39 @@
+######################################
+#### cType KU PHONEBOOK ##############
+######################################
+lib.contentElement = FLUIDTEMPLATE
+lib.contentElement {
+    templateName = Default
+    templateRootPaths {
+        7 = EXT:ku_rss_ce/Resources/Private/Templates/ContentElements/
+    }
+    partialRootPaths {
+        7 = EXT:ku_rss_ce/Resources/Private/Partials/ContentElements/
+    }
+    layoutRootPaths {
+        7 = EXT:ku_rss_ce/Resources/Private/Layouts/ContentElements/
+    }
+}
+
+#################################
+#### MAKE PLUGIN ACT AS cTYPE ###
+#################################
+tt_content.ku_rss_ce >
+tt_content.ku_rss_ce =< tt_content.list.20.ku_rss_ce_pi1
+
+#################
+#### PLUGIN #####
+#################
+plugin.tx_kurss {
+    view {
+        templateRootPaths {
+             20 = EXT:ku_rss_ce/Resources/Private/Templates/
+        }
+        partialRootPaths {
+            20 = EXT:ku_rss_ce/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            20 = EXT:ku_rss_ce/Resources/Private/Layouts/
+        }
+    }
+}

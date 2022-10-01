@@ -1,0 +1,21 @@
+
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-08-23UTC07:15:050">
+        <header>
+            <authorName>Nanna Ellegaard</authorName>
+            <authorEmail>nel@adm.ku.dk</authorEmail>
+        </header>
+        <body>
+        <trans-unit id="title" resname="title">
+            <source>Display RSS/Atom feed</source>
+        </trans-unit>
+        <trans-unit id="description" resname="description">
+            <source>Displays RSS or Atom feeds in a list.</source>
+        </trans-unit>
+        <trans-unit id="linklabel" resname="linklabel">
+            <source>Add link to RSS/Atom ressource.</source>
+        </trans-unit>
+        </body>
+    </file>
+</xliff>
