@@ -1,0 +1,21 @@
+{
+    "name": "university-of-copenhagen/ku-rss-ce",
+    "type": "typo3-cms-extension",
+    "description": "Content element to display RSS/Atom feeds.",
+    "homepage": "https://www.ku.dk/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "bk2k/bootstrap-package": "^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "UniversityOfCopenhagen\\KuRssCe\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "ku_rss_ce"
+        }
+    }
+}

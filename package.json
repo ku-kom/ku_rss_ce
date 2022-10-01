@@ -1,0 +1,13 @@
+{
+    "name": "ku_rss_ce",
+    "version": "1.0.0",
+    "description": "Sitepackage for the project KU RSS/Atom parser",
+    "keywords": [
+        "TYPO3",
+        "Bootstrap",
+        "PHP",
+        "JavaScript"
+    ],
+    "author": "Nanna Ellegaard",
+    "license": "ISC"
+}
