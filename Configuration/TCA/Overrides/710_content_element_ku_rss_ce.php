@@ -41,13 +41,40 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
             'eval' => 'lower,required'
         ],
     ],
+    'ku_rss_items' => [
+        'exclude' => 0,
+        'label' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:items',
+        'config' => [
+           'type' => 'text',
+           'renderType' => 'input',
+           'size' => 5,
+           'eval' => 'trim,int',
+           'min' => 1,
+           'max' => 100,
+           'default' => 10,
+        ],
+     ],
+     'ku_rss_layout' => [
+        'exclude' => 0,
+        'label' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layout',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'items' => [
+                ['LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layuot_tiles', 'layuot_tiles'],
+                ['LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layuot_list', 'layuot_list'],
+            ],
+            'default' => 'layuot_tiles',
+
+        ],
+    ],
 ]);
 
 $ku_rss_ce_settings = [
     'showitem' => '
     --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
         --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
-        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.headers;headers,ku_rss_ce,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.headers;headers,ku_rss_ce,ku_rss_items,ku_rss_layout,
     --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
         --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
         --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,

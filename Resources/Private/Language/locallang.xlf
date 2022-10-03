@@ -6,7 +6,9 @@
             <authorEmail>nel@adm.ku.dk</authorEmail>
         </header>
         <body>
-        
+            <trans-unit id="rss_warningmsg" resname="rss_warningmsg">
+            <source>Error: Something went wrong, try again later.</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>

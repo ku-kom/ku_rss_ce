@@ -12,8 +12,9 @@ defined('TYPO3') or die();
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(function () {
+    $extensionKey = 'ku_rss_ce';
     ExtensionUtility::registerPlugin(
-        'ku_rss_ce',
+        $extensionKey,
         'Pi1',
         'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:title',
         'ku-rss-icon'

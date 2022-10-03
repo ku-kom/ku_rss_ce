@@ -13,7 +13,19 @@
             <source>Displays RSS or Atom feeds in a list.</source>
         </trans-unit>
         <trans-unit id="linklabel" resname="linklabel">
-            <source>Add link to RSS/Atom ressource.</source>
+            <source>Add link to RSS/Atom ressource</source>
+        </trans-unit>
+        <trans-unit id="items" resname="items">
+            <source>Number of items</source>
+        </trans-unit>
+         <trans-unit id="layuot" resname="layout">
+            <source>Select layout</source>
+        </trans-unit>
+        <trans-unit id="layuot_tiles" resname="layout_tiles">
+            <source>Tiles</source>
+        </trans-unit>
+        <trans-unit id="layuot_list" resname="layout_list">
+            <source>List</source>
         </trans-unit>
         </body>
     </file>
