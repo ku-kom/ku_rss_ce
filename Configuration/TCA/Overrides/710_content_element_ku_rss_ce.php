@@ -38,7 +38,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
             // Replace with the following in v.12:
             //'type' => 'link',
             //'allowedTypes' => ['page', 'url', 'record'],
-            'placeholder' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:linklabel',
+            'eval' => 'lower,required'
         ],
     ],
 ]);
