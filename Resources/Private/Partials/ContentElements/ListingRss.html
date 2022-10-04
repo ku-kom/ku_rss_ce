@@ -1,11 +1,27 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
 <f:if condition="{feed} > 0">
     <f:then>
-        <ul>
-            <f:for each="{feed}" as="item" iteration="iterator">
-                <li>{item.title}</li>
-            </f:for>
-        </ul>
+        <f:for each="{feed}" as="item" iteration="iterator">
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{item.link}" class="stretched-link">
+                        <img src="{ku:FeedImage(contentNode: item.contentEncoded)}" loading="lazy" class="img-fluid card-img-top" alt="">
+                        <div class="card-body">
+                            <p class="card-text text-right"><small class="text-muted">
+                                    <f:format.date format="%d. %b %Y">{item.pubDate}</f:format.date>
+                                </small></p>
+                            <h5 class="card-title">
+                                <f:format.crop maxCharacters="60" respectWordBoundaries="true">{item.title}</f:format.crop>
+                            </h5>
+                            <p class="card-text">
+                                <f:format.crop maxCharacters="58" respectWordBoundaries="true">{item.description}</f:format.crop>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </f:for>
     </f:then>
 </f:if>
 
