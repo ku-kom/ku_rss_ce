@@ -1,8 +1,19 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:comment><f:debug>{_all}</f:debug></f:comment>    
-    <div class="ku-rss-wrapper">
-        <f:if condition="{data.header}">
-            <h2 class="ku-rss-header {data.header_position}"><span>{data.header}</span></h2>
-        </f:if>
-    </div>
+
+<div class="ku-rss-wrapper">
+    <f:if condition="{data.header}">
+        <h2 class="ku-rss-header {data.header_position}"><span>{data.header}</span></h2>
+    </f:if>
+    <f:flashMessages />
+    <f:if condition="{feed} > 0">
+        <f:then>
+            <ul>
+                <f:for each="{feed}" as="item" iteration="iterator">
+                    <li>{item.title}</li>
+                </f:for>
+            </ul>
+        </f:then>
+    </f:if>
+</div>
+
 </html>
