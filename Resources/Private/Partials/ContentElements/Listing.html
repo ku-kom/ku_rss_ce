@@ -5,15 +5,16 @@
         <h2 class="ku-rss-header {data.header_position}"><span>{data.header}</span></h2>
     </f:if>
     <f:flashMessages />
-    <f:if condition="{feed} > 0">
-        <f:then>
-            <ul>
-                <f:for each="{feed}" as="item" iteration="iterator">
-                    <li>{item.title}</li>
-                </f:for>
-            </ul>
-        </f:then>
-    </f:if>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <f:if condition="{type} = atom">
+            <f:then>
+                <f:render partial="ContentElements/ListingAtom" arguments="{_all}" />
+            </f:then>
+            <f:else>
+                <f:render partial="ContentElements/ListingRss" arguments="{_all}" />
+            </f:else>
+        </f:if>
+    </div>
 </div>
 
 </html>
