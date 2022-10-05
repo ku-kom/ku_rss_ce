@@ -1,6 +1,9 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * Parses RSS and Atom feeds
+ */
 
 namespace UniversityOfCopenhagen\KuRssCe\Controller;
 
@@ -27,7 +30,7 @@ class RssController extends ActionController
     {
         $cObjectData = $this->configurationManager->getContentObject()->data;
         $url = $cObjectData['ku_rss_ce'];
-        $itemsPerPage = $cObjectData['ku_rss_items'];
+        $itemsPerPage = $cObjectData['ku_rss_items'] ?? 10;
         
 
         // Check if the url is valid
@@ -59,22 +62,29 @@ class RssController extends ActionController
                     $json = json_encode($xml);
                     $feed = json_decode($json, true);
 
-                    if ($feedtype == 'rss') {
-                        // Feed is RSS 2.0
-                        $items = $feed['channel']['item'];
-                        $this->view->assign('type', 'rss');
-                        $this->view->assign('title', $feed['channel']['title']);
-                        $this->view->assign('description', $feed['channel']['description']);
-                        $this->view->assign('data', $cObjectData);
-                    } else {
+                    if ($feedtype == 'atom') {
                         // Feed is Atom
                         $items = $feed['entry'];
-                        $this->view->assign('type', 'atom');
-                        $this->view->assign('title', $feed['title']);
+                        if ($items) {
+                            $this->view->assign('type', 'atom');
+                            $this->view->assign('title', $feed['title']);
+                        }
+                    } else {
+                        // Feed is RSS or text/xml
+                        $items = $feed['channel']['item'];
+                        if ($items) {
+                            $this->view->assign('type', 'rss');
+                            $this->view->assign('title', $feed['channel']['title']);
+                            $this->view->assign('description', $feed['channel']['description']);
+                        }
+                    }
+
+                    if ($items) {
+                        // $this->view->assign('feed', $items);
+                        // Only return the selected number of items:
+                        $this->view->assign('feed', array_slice($items, 0, $itemsPerPage));
                         $this->view->assign('data', $cObjectData);
                     }
-                    $this->view->assign('feed', $items);
-                    $this->view->assign('numberOfItems', $itemsPerPage);
                 }
             } catch (\Exception $e) {
                 // Display error message

@@ -1,12 +1,24 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-
 <f:if condition="{feed} > 0">
     <f:then>
         <f:for each="{feed}" as="item" iteration="iterator">
+            <f:variable name="img_source">
+                <f:if condition="{item.contentEncoded}">
+                    <f:then>{ku:FeedImage(contentNode: item.contentEncoded)}</f:then>
+                    <f:else>
+                        <f:format.raw>
+                            <ku:format.eliminate tabs="1" whitespace="1" windowsBreaks="1" trimWhitespace="1">
+                                <f:for each="{item.enclosure}" as="link">{link.url}</f:for>
+                            </ku:format.eliminate>
+                        </f:format.raw>
+                    </f:else>
+                </f:if>
+            </f:variable>
+           
             <div class="col">
                 <div class="card h-100">
                     <a href="{item.link}" class="stretched-link">
-                        <img src="{ku:FeedImage(contentNode: item.contentEncoded)}" loading="lazy" class="img-fluid card-img-top" alt="">
+                        <img src="{img_source}" loading="lazy" class="img-fluid card-img-top" alt="">
                         <div class="card-body">
                             <p class="card-text text-right"><small class="text-muted">
                                     <f:format.date format="%d. %b %Y">{item.pubDate}</f:format.date>
