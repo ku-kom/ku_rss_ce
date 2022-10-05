@@ -2,23 +2,15 @@
 <f:if condition="{feed} > 0">
     <f:then>
         <f:for each="{feed}" as="item" iteration="iterator">
-            <f:variable name="img_source">
-                <f:if condition="{item.contentEncoded}">
-                    <f:then>{ku:FeedImage(contentNode: item.contentEncoded)}</f:then>
-                    <f:else>
-                        <f:format.raw>
-                            <ku:format.eliminate tabs="1" whitespace="1" windowsBreaks="1" trimWhitespace="1">
-                                <f:for each="{item.enclosure}" as="link">{link.url}</f:for>
-                            </ku:format.eliminate>
-                        </f:format.raw>
-                    </f:else>
-                </f:if>
-            </f:variable>
+            
+            <f:variable name="img_source"><f:if condition="{item.contentEncoded}"><f:then>{ku:FeedImage(contentNode: item.contentEncoded)</f:then><f:else><f:for each="{item.enclosure}" as="link">{ku:Format.eliminate(whitespace: link.url)}</f:for></f:else></f:if></f:variable>
            
             <div class="col">
                 <div class="card h-100">
                     <a href="{item.link}" class="stretched-link">
-                        <img src="{img_source}" loading="lazy" class="img-fluid card-img-top" alt="">
+                        <f:if condition="{img_source}">
+                            <img src="{img_source}" loading="lazy" class="img-fluid card-img-top" alt="">
+                        </f:if>
                         <div class="card-body">
                             <p class="card-text text-right"><small class="text-muted">
                                     <f:format.date format="%d. %b %Y">{item.pubDate}</f:format.date>
