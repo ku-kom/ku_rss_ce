@@ -27,13 +27,16 @@ tt_content.ku_rss_ce =< tt_content.list.20.kurssce_pi1
 plugin.tx_kurssce {
     view {
         templateRootPaths {
-             20 = EXT:ku_rss_ce/Resources/Private/Templates/
+             0 = EXT:ku_rss_ce/Resources/Private/Templates/
+             1 = {$plugin.tx_kurssce.view.templateRootPath}
         }
         partialRootPaths {
-            20 = EXT:ku_rss_ce/Resources/Private/Partials/
+            0 = EXT:ku_rss_ce/Resources/Private/Partials/
+            1 = {$plugin.tx_kurssce.view.partialRootPath}
         }
         layoutRootPaths {
-            20 = EXT:ku_rss_ce/Resources/Private/Layouts/
+            0 = EXT:ku_rss_ce/Resources/Private/Layouts/
+            1 = {$plugin.tx_kurssce.view.layoutRootPath}
         }
     }
 }
