@@ -28,5 +28,5 @@ ExtensionUtility::configurePlugin(
   'ku_rss_ce',
   'Pi1',
   [\UniversityOfCopenhagen\KuRssCe\Controller\RssController::class => 'getFeed'],
-  [\UniversityOfCopenhagen\KuRssCe\Controller\RssController::class => 'getFeed']
+  []
 );
