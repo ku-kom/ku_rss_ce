@@ -1,6 +1,6 @@
 {
     "name": "ku_rss_ce",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Sitepackage for the project KU RSS/Atom parser",
     "keywords": [
         "TYPO3",
