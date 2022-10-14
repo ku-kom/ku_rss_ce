@@ -91,3 +91,9 @@ $ku_rss_ce_settings = [
 
 // Configure element type
 $GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] = $ku_rss_ce_settings;
+
+/**
+ * Registers backend previewRenderer
+ */
+
+$GLOBALS['TCA']['tt_content']['types']['ku_rss_ce']['previewRenderer'] = \UniversityOfCopenhagen\KuRssCe\Backend\Preview\KuRssCePreviewRenderer::class;

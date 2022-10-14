@@ -13,7 +13,7 @@
             <source>Displays RSS or Atom feeds in a list.</source>
         </trans-unit>
         <trans-unit id="linklabel" resname="linklabel">
-            <source>Add link to RSS/Atom ressource</source>
+            <source>Link to RSS feed</source>
         </trans-unit>
         <trans-unit id="items" resname="items">
             <source>Number of items</source>
