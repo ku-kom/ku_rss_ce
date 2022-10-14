@@ -9,9 +9,12 @@
 
 defined('TYPO3') or die('Access denied.');
 
+$contentTypeName = 'ku_rss_ce';
+$ll = 'LLL:EXT:'.$contentTypeName.'/Resources/Private/Language/locallang_be.xlf:';
+
 // Add Content Element
-if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
-    $GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] = [];
+if (!is_array($GLOBALS['TCA']['tt_content']['types'][$contentTypeName] ?? false)) {
+    $GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = [];
 }
 
 // Add content element to selector list
@@ -19,8 +22,8 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
     'tt_content',
     'CType',
     [
-        'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:title',
-        'ku_rss_ce',
+        $ll . 'title',
+        $contentTypeName,
         'ku-rss-icon'
     ],
     'special',
@@ -31,7 +34,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
     'ku_rss_ce' => [
         'exclude' => 0,
-        'label' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:linklabel',
+        'label' => $ll . 'linklabel',
         'config' => [
             'type' => 'input',
             'renderType' => 'inputLink',
@@ -43,7 +46,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
     ],
     'ku_rss_items' => [
         'exclude' => 0,
-        'label' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:items',
+        'label' => $ll . 'items',
         'config' => [
            'type' => 'text',
            'renderType' => 'input',
@@ -56,15 +59,20 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] ?? false)) {
      ],
      'ku_rss_layout' => [
         'exclude' => 0,
-        'label' => 'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layout',
+        'label' => $ll . 'layout',
         'config' => [
             'type' => 'select',
             'renderType' => 'selectSingle',
             'items' => [
-                ['LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layuot_tiles', 'layuot_tiles'],
-                ['LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:layuot_list', 'layuot_list'],
+                [$ll . 'layuot_tiles', 'layout_tiles', 'EXT:'.$contentTypeName.'/Resources/Public/Icons/layout_tiles.svg'],
+                [$ll . 'layuot_list', 'layout_list', 'EXT:'.$contentTypeName.'/Resources/Public/Icons/layout_list.svg'],
             ],
-            'default' => 'layuot_tiles',
+            'fieldWizard' => [
+                'selectIcons' => [
+                    'disabled' => false,
+                ],
+            ],
+            'default' => 'layout_tiles',
 
         ],
     ],
@@ -90,10 +98,10 @@ $ku_rss_ce_settings = [
 ];
 
 // Configure element type
-$GLOBALS['TCA']['tt_content']['types']['ku_rss_ce'] = $ku_rss_ce_settings;
+$GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = $ku_rss_ce_settings;
 
 /**
  * Registers backend previewRenderer
  */
 
-$GLOBALS['TCA']['tt_content']['types']['ku_rss_ce']['previewRenderer'] = \UniversityOfCopenhagen\KuRssCe\Backend\Preview\KuRssCePreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types'][$contentTypeName]['previewRenderer'] = \UniversityOfCopenhagen\KuRssCe\Backend\Preview\KuRssCePreviewRenderer::class;

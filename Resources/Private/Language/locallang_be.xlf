@@ -22,10 +22,10 @@
             <source>Select layout</source>
         </trans-unit>
         <trans-unit id="layuot_tiles" resname="layout_tiles">
-            <source>Tiles</source>
+            <source>Tiles layout</source>
         </trans-unit>
         <trans-unit id="layuot_list" resname="layout_list">
-            <source>List</source>
+            <source>List layout</source>
         </trans-unit>
         </body>
     </file>
