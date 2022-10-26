@@ -3,7 +3,7 @@
     <f:then>
         <f:for each="{feed}" as="item" iteration="iterator">
             
-            <f:variable name="img_source"><f:if condition="{item.contentEncoded}"><f:then>{ku:FeedImage(contentNode: item.contentEncoded)</f:then><f:else><f:for each="{item.enclosure}" as="link">{ku:Format.eliminate(whitespace: link.url)}</f:for></f:else></f:if></f:variable>
+            <f:variable name="img_source"><f:if condition="{item.contentEncoded}"><f:then>{ku:FeedImage(contentNode: item.contentEncoded)}</f:then><f:else><f:for each="{item.enclosure}" as="link">{ku:Format.eliminate(whitespace: link.url)}</f:for></f:else></f:if></f:variable>
            
             <div class="col">
                 <div class="card h-100">
