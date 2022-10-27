@@ -10,6 +10,7 @@ namespace UniversityOfCopenhagen\KuRssCe\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class RssController extends ActionController
@@ -88,6 +89,14 @@ class RssController extends ActionController
                         $this->view->assign('feed', array_slice($items, 0, $itemsPerPage));
                         $this->view->assign('data', $cObjectData);
                     }
+                } else {
+                    // Sisplay error message
+                    $this->addFlashMessage(
+                        $this->getLanguageService()->sL('LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang.xlf:error_msg'),
+                        '',
+                        FlashMessage::ERROR,
+                        false
+                    );
                 }
             } catch (\Exception $e) {
                 // Display error message
@@ -100,5 +109,10 @@ class RssController extends ActionController
             }
         }
         return $this->htmlResponse();
+    }
+
+    protected function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }
