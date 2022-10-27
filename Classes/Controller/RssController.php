@@ -62,26 +62,29 @@ class RssController extends ActionController
                     $json = json_encode($xml);
                     $feed = json_decode($json, true);
 
-                    if ($feedtype == 'atom') {
-                        // Feed is Atom
-                        $items = $feed['entry'];
-                        if ($items) {
-                            $this->view->assign('type', 'atom');
-                            $this->view->assign('title', $feed['title']);
-                        }
-                    } else {
-                        // Feed is RSS or text/xml
-                        $items = $feed['channel']['item'];
-                        if ($items) {
-                            $this->view->assign('type', 'rss');
-                            $this->view->assign('title', $feed['channel']['title']);
-                            $this->view->assign('description', $feed['channel']['description']);
-                        }
+                    switch ($feedtype == 'atom') {
+                        case 'atom':
+                            // Feed is Atom
+                            $items = $feed['entry'];
+                            if ($items) {
+                                $this->view->assign('type', 'atom');
+                                $this->view->assign('title', $feed['title']);
+                            }
+                            break;
+                        default:
+                            // Feed is RSS or text/xml
+                            $items = $feed['channel']['item'];
+                            if ($items) {
+                                $this->view->assign('type', 'rss');
+                                $this->view->assign('title', $feed['channel']['title']);
+                                $this->view->assign('description', $feed['channel']['description']);
+                            }
+                            break;
                     }
 
                     if ($items) {
                         // $this->view->assign('feed', $items);
-                        // Only return the selected number of items:
+                        // Only return the user-defined number of items:
                         $this->view->assign('feed', array_slice($items, 0, $itemsPerPage));
                         $this->view->assign('data', $cObjectData);
                     }
