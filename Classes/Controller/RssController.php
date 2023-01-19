@@ -11,6 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class RssController extends ActionController
@@ -29,6 +30,14 @@ class RssController extends ActionController
      */
     public function getFeedAction(): ResponseInterface
     {
+        $typo3VersionNumber = VersionNumberUtility::convertVersionNumberToInteger(
+            VersionNumberUtility::getNumericTypo3Version()
+        );
+        if ($typo3VersionNumber < 12000000) {
+            $cObjectData = $this->configurationManager->getContentObject()->data;
+        } else {
+            $cObjectData = $this->configurationManager->getContentObjectRenderer()->data;
+        }
         $cObjectData = $this->configurationManager->getContentObject()->data;
         $url = $cObjectData['ku_rss_ce'];
         $itemsPerPage = $cObjectData['ku_rss_items'] ?? 10;
