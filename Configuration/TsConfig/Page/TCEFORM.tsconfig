@@ -3,7 +3,7 @@
 #
 TCEFORM {
     tt_content {
-        subheader {
+        header {
            types {
                 ku_rss_ce {
                     disabled = 1
@@ -12,7 +12,7 @@ TCEFORM {
         }
         subheader {
            types {
-                list {
+                ku_rss_ce {
                     disabled = 1
                 }
             }
@@ -24,9 +24,23 @@ TCEFORM {
                 }
             }
         }
-        header_link {
+        header_layout {
            types {
-                list {
+                ku_rss_ce {
+                    disabled = 1
+                }
+            }
+        }
+        header_position {
+           types {
+                ku_rss_ce {
+                    disabled = 1
+                }
+            }
+        }
+        date {
+           types {
+                ku_rss_ce {
                     disabled = 1
                 }
             }

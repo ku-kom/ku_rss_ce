@@ -8,3 +8,12 @@ plugin.tx_kurssce {
         layoutRootPath = EXT:ku_rss_ce/Resources/Private/Layouts/
     }
 }
+
+ku_rss_ce {
+    assets {
+        # cat=plugin.tx_kurssce/Assets/; type=string; label=CSS assets: Path to stylesheet.
+        extraCss =
+        # cat=plugin.tx_kurssce/Assets/; type=string; label=JavaScript assets: Path to javaScript file.
+        extraJs = 
+    }
+}

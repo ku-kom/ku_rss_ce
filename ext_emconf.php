@@ -10,10 +10,9 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'KU RSS/Atom feed content element',
     'description' => 'Content element to display RSS/Atom feeds.',
-    'category' => 'templates',
+    'category' => 'fe',
     'constraints' => [
         'depends' => [
-            'bootstrap_package' => '*',
         ],
         'conflicts' => [
         ],

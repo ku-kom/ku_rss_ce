@@ -18,6 +18,6 @@ call_user_func(function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
         $extensionKey,
         'Configuration/TypoScript',
-        'LLL:EXT:ku_rss_ce/Resources/Private/Language/locallang_be.xlf:title'
+        'KU Display RSS/Atom feed'
     );
 });

@@ -1,8 +1,9 @@
-######################################
-#### cType KU PHONEBOOK ##############
-######################################
-lib.contentElement = FLUIDTEMPLATE
-lib.contentElement {
+#################################
+#### MAKE PLUGIN ACT AS cTYPE ###
+#################################
+tt_content.ku_rss_ce >
+tt_content.ku_rss_ce =< tt_content.list.20.kurssce_pi1
+tt_content.ku_rss_ce {
     templateName = Default
     templateRootPaths {
         7 = EXT:ku_rss_ce/Resources/Private/Templates/ContentElements/
@@ -14,12 +15,6 @@ lib.contentElement {
         7 = EXT:ku_rss_ce/Resources/Private/Layouts/ContentElements/
     }
 }
-
-#################################
-#### MAKE PLUGIN ACT AS cTYPE ###
-#################################
-tt_content.ku_rss_ce >
-tt_content.ku_rss_ce =< tt_content.list.20.kurssce_pi1
 
 #################
 #### PLUGIN #####
@@ -39,4 +34,22 @@ plugin.tx_kurssce {
             1 = {$plugin.tx_kurssce.view.layoutRootPath}
         }
     }
+}
+
+##########################
+#### OPTION TO ADD CSS ###
+##########################
+lib.ku_rss_ce.pagecss = TEXT
+lib.ku_rss_ce.pagecss {
+    if.isTrue = {$ku_rss_ce.assets.extraCss}
+    value = {$ku_rss_ce.assets.extraCss}
+}
+
+##########################
+#### OPTION TO ADD JS ####
+##########################
+lib.ku_rss_ce.pagejs = TEXT
+lib.ku_rss_ce.pagejs {
+    if.isTrue = {$ku_rss_ce.assets.extraJs}
+    value = {$ku_rss_ce.assets.extraJs}
 }

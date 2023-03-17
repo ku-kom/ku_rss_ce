@@ -20,3 +20,6 @@ call_user_func(function () {
         'ku-rss-icon'
     );
 });
+
+// Remove default plugin fields
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['kurssce_pi1'] = 'recursive,pages';
